@@ -1,15 +1,18 @@
 import React from 'react'
+import { ipcRenderer } from 'electron'
 import { Toast, InputGroup } from 'react-bootstrap'
 
 import './Entry.css'
 
 export default function Entry(props) {
+
     var color = ''
     if(props.emoji === '😀') color = 'yellow'
     if(props.emoji === '😍') color = 'red'
     if(props.emoji === '🤮') color = 'green'
     if(props.emoji === '😎') color = 'gray'
     if(props.emoji === '😢') color = 'blue'
+
     return (
         <Toast className="width-100 line-break">
             <InputGroup.Text className={ color }>
@@ -17,6 +20,10 @@ export default function Entry(props) {
                 <small>{ props.date }</small>
                 &nbsp;&nbsp;
                 <small>{ props.emoji }</small>
+                &nbsp;&nbsp;
+                <button
+                    onClick={ deleteEntry }
+                ><span aria-hidden="true"><b>×</b></span></button>
             </InputGroup.Text>
             <Toast.Body>{ props.text }</Toast.Body>
         </Toast>

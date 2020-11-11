@@ -3,3 +3,7 @@
 .green { background-color: rgba(174,213,108,1) !important }
 .gray { background-color: rgba(190,190,190,1) !important }
 .blue { background-color: rgba(104,173,213,1) !important }
+button {
+    border-style: none;
+    background-color: transparent;
+}
