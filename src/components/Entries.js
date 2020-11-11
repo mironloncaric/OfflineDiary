@@ -45,7 +45,7 @@ export default function Entries() {
 				as="select" 
 				className="w-20 no-margin"
 				value={ emoji }
-				onChange={e => setEmoji(e.target.value)}
+				onChange={ e => setEmoji(e.target.value) }
 			>
 				<option>😀</option>
 				<option>😍</option>
@@ -80,6 +80,7 @@ export default function Entries() {
 							date={ entry.date }
 							text={ entry.text }
 							key={ id }
+							id={ entry._id }
 							emoji={ entry.emoji }
 						/>
 					))
