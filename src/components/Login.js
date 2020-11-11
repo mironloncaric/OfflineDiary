@@ -24,9 +24,10 @@ export default function Login() {
 
     useEffect(() => {
         ipcRenderer.on('pw-exists', (event, arg) => {
-            if (arg === true) { 
+            if (arg.pwExists === true) { 
                 setPwExists(true)
                 setSize('small')
+                setName(arg.name)
             }
             else { 
                 setPwExists(false)
@@ -78,8 +79,8 @@ export default function Login() {
             }
             <div className="login">
                 <div className={`child ${size}`}>
-                    <h4 style={{ textAlign:'center' }}>{ pwExists ? 'Dobrodošli natrag!' : 'Dobrodošli!' }</h4>
-                    <small>{ !pwExists && 'Upišite lozinku kojom ćete pristupiti svom dnevniku' }</small>
+                    <h4 style={{ textAlign:'center' }}>{ pwExists ? `Dobrodošli natrag, ${name}!` : 'Dobrodošli!' }</h4>
+                    <small>{ !pwExists && 'Upišite ime i lozinku kojom ćete pristupiti svom dnevniku' }</small>
                     {
                         !pwExists &&
                         <Form.Control 

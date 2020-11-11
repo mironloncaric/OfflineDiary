@@ -182,19 +182,27 @@ ipcMain.on('load-entries', (event, arg) => {
 		
 		const stuff = []
 		entries.find({}, (err, docs) => {
+
 			event.sender.send('handle-load-entries', docs)
+
 		})
 
 	})
 
 })
 ipcMain.on('pw-exists', (event, arg) => {
+
 	password.loadDatabase(() => {
-		password.find({}, (err, docs) => {
-			if (docs.length > 0) event.sender.send('pw-exists', true)
+
+		password.findOne({}, (err, docs) => {
+			
+			if (docs) event.sender.send('pw-exists', { pwExists: true, name:docs.name })
 			else event.sender.send('pw-exists', false)
+
 		})
+
 	})
+
 })
 
 ipcMain.on('set-pw', (event, arg) => {
@@ -214,6 +222,7 @@ ipcMain.on('set-pw', (event, arg) => {
 	})
 
 })
+
 ipcMain.on('check-pw', (event, arg) => {
 
 	password.loadDatabase(() => {
