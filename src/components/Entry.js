@@ -21,9 +21,7 @@ export default function Entry(props) {
                 &nbsp;&nbsp;
                 <small>{ props.emoji }</small>
                 &nbsp;&nbsp;
-                <button
-                    onClick={ deleteEntry }
-                ><span aria-hidden="true"><b>×</b></span></button>
+                <button><span aria-hidden="true"><b>×</b></span></button>
             </InputGroup.Text>
             <Toast.Body>{ props.text }</Toast.Body>
         </Toast>
